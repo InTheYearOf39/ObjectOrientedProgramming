@@ -64,6 +64,7 @@ public class CarRentall {
     }
     
     public static class CarRentalContract{
+        
         Customer cm = new Customer();
         Vehicle vh = new Car();
         
@@ -78,9 +79,10 @@ public class CarRentall {
         }
     }
     public static class CarRental{
-        String carArray[] = new String[20];
+        String carArray[] = new String[4];
         
         void addContract(CarRentalContract c1){
+            
             for(int i=0; i<carArray.length; i++){
                 carArray[i] = c1.toString(); 
             }
@@ -88,12 +90,15 @@ public class CarRentall {
         
         String displayContracts(){
             
-            for (String a : carArray){
-                
-                return a;
+            if(carArray.length > 0){
+               for (String contract : carArray){
+                    System.out.println(contract);
+                } 
             }
-            
-            return "No Car Rental Contracts";
+            else{            
+                return "No Car Rental Contracts";
+            }
+            return "";
         }
     }
     
@@ -109,11 +114,14 @@ public class CarRentall {
         GarageTester gt = new GarageTester();
         System.out.println("Garage Tester: "+gt.getExample());
          
-        CarRentalContract cc2 = new CarRentalContract("jim jones","Wakiso");    
+        CarRentalContract cc2 = new CarRentalContract("jim jones","Wakiso");
+        
         CarRental cr = new CarRental();
 
         cr.addContract(cc2);
-        System.out.println("My Contracts:"+cr.displayContracts());
+
+        System.out.println("My Contracts:");
+        System.out.println(cr.displayContracts());
     }
     
 }
