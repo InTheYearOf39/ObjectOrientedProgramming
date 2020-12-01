@@ -1,127 +1,39 @@
 
-package carrental;
+public class TestCarTruck {
 
-/**
- *
- * @author Kinathan
- */
-public class CarRentall {
-
-    public class Vehicle{
-        String Color = "red";
-        
-        public String getColor(){
-            return Color;
-        }
-        public String toString(){//overriding the toString() method  
-            return "This vehicle is "+Color;  
-       }
-    }
-    
-    public static class Car extends Vehicle{
-        boolean wintertires = false;
-
-        public String toString(){//overriding the toString() method  
-            return "This vehicle is "+Color+", has winter tires:"+wintertires;  
-       }
-    }
-    public static class Truck extends Vehicle{
-       boolean hastrailer = false; 
-        public String toString(){//overriding the toString() method  
-           return "This vehicle is "+Color+", has trailer:"+hastrailer;  
-        }
-    } 
-    public static class Garage{
-        Vehicle nv = new Car();
-        Vehicle tp = new Truck();
-        
-        
-        public String setVehicle(Vehicle parked){
-           return parked.toString();
-           //nv.toString();          
-        }
-        public String toString(){//overriding the toString() method  
-           return tp.toString()+nv.toString();  
-        }
-    }
-    
-    public static class GarageTester{
-        
-        public String getExample(){
-            Truck tr = new Truck();
-            tr.Color = "Black";
-            tr.hastrailer = false;
-            
-            Garage gr = new Garage();
-            return gr.setVehicle(tr);
-        }
-    }
-    public static class Customer{
-        
-        String name = "Bob";
-        String address = "Entebbe";
-    
-    }
-    
-    public static class CarRentalContract{
-        
-        Customer cm = new Customer();
-        Vehicle vh = new Car();
-        
-        CarRentalContract(String name,String address){
-            cm.name = name;
-            cm.address = address;
-        }
-        
-        
-        public String toString(){//overriding the toString() method  
-           return cm.name+" : "+vh.toString();  
-        }
-    }
-    public static class CarRental{
-        String carArray[] = new String[4];
-        
-        void addContract(CarRentalContract c1){
-            
-            for(int i=0; i<carArray.length; i++){
-                carArray[i] = c1.toString(); 
-            }
-        }
-        
-        String displayContracts(){
-            
-            if(carArray.length > 0){
-               for (String contract : carArray){
-                    System.out.println(contract);
-                } 
-            }
-            else{            
-                return "No Car Rental Contracts";
-            }
-            return "";
-        }
-    }
-    
     public static void main(String[] args) {
         
-        //my test cases
-        Car mycar = new Car();
-        System.out.println("My car instance: "+mycar.toString());
+        Vehicle bencar = new Car("Green",true);
+        Vehicle petetruck = new Truck("Orange",true);
         
-        Truck mytruck = new Truck();
-        System.out.println("My truck instance: "+mytruck.toString());
+        
+        System.out.println(bencar.toString());
+        System.out.println(petetruck.toString());
+        
         
         GarageTester gt = new GarageTester();
         System.out.println("Garage Tester: "+gt.getExample());
-         
-        CarRentalContract cc2 = new CarRentalContract("jim jones","Wakiso");
+        
+        Customer nc1 = new Customer("jack","Kampala");
+        Customer nc2 = new Customer("Kinobe","Toronto");
+        
+        Vehicle chevroletCar = new Car("Purple",true);
+        
+        //CarRentalContract cc2 = new CarRentalContract(nc1,bencar);
+        CarRentalContract cc3 = new CarRentalContract(nc2,chevroletCar);
         
         CarRental cr = new CarRental();
-
-        cr.addContract(cc2);
+        cr.addContract(cc3);
+        //cr.addContract(cc2);
+        
+//        for (int i=1; i<=CarRental.rentObjects; i++){
+//            System.out.println(cr.displayContracts());
+//        }
 
         System.out.println("My Contracts:");
         System.out.println(cr.displayContracts());
+        
+    
     }
     
 }
