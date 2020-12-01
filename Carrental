@@ -1,4 +1,4 @@
-
+//Class TestCarTruck contains main method for testing my previously created classes
 public class TestCarTruck {
 
     public static void main(String[] args) {
